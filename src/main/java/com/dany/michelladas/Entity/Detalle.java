@@ -1,0 +1,34 @@
+package com.dany.michelladas.Entity;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@AllArgsConstructor     // Genera el constructor con los paremetros
+@NoArgsConstructor      // Genera el constructor sin los parametros
+@Builder                // Con esto, lombok implementa el patron de diseño Builder para construir objetos de esta clase
+public class Detalle {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Positive
+    private Integer cantidad;
+
+    /** Precio unitario del producto al momento de la orden */
+    @Positive
+    private Double precioUnitario;
+
+
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
+}

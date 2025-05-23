@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    background-color:  #e0ffe0;
+    overflow-x: hidden;
+}
+.btn-success {
+    background-color: #49cf49 ;
+
+}

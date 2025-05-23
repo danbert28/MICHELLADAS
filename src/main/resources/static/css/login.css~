@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    background-color:  #e0ffe0;
+}
+.btn-success {
+    background-color: #49cf49 ;
+
+}

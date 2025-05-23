@@ -1,0 +1,41 @@
+package com.dany.michelladas.Security;
+
+
+import com.dany.michelladas.Entity.Usuario;
+import com.dany.michelladas.Repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+/**
+ * Servicio que permite a Spring Security buscar un usuario por su email
+ * y adaptarlo a un objeto UserDetails para autenticación.
+ */
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    /**
+     * Busca al usuario por su email y construye un UserDetailsImpl con su rol.
+     *
+     * @param email Correo electrónico del usuario
+     * @return Detalles del usuario adaptados a Spring Security
+     * @throws UsernameNotFoundException si no se encuentra el usuario
+     */
+    @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario usuario = Optional.ofNullable(usuarioRepository.findByEmail(email))
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con email: " + email));
+
+        return UserDetailsImpl.build(usuario);
+    }
+}
+

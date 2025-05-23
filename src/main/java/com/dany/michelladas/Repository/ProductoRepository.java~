@@ -1,0 +1,4 @@
+package com.dany.michelladas.Repository;
+
+public interface ProductoRepository {
+}

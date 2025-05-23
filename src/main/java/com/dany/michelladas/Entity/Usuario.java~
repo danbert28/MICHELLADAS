@@ -1,0 +1,48 @@
+package com.dany.michelladas.Entity;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@AllArgsConstructor     // Genera el constructor con los paremetros
+@NoArgsConstructor      // Genera el constructor sin los parametros
+@Builder                // Con esto, lombok implementa el patron de diseño Builder para construir objetos de esta clase
+@Entity
+@Table(name = "usuario")
+public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    private String nombre;
+
+
+    @Email
+    @NotBlank
+    @Column(unique = true)
+    private String email;
+
+    @NotBlank
+    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")      // Validacion para el tamaño de la contraseña
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z]).+$", message = "Debe contener letras y al menos un número")       //  Validacion para la contraseña
+    private String contraseña;
+
+
+    @Pattern(regexp = "\\d{10}", message = "El número debe contener solo dígitos (10 caracteres)")      // Validacion para el numero telefonico
+    private String telefono;
+
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
+
+
+}

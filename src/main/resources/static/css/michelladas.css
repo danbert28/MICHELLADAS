@@ -1,0 +1,378 @@
+/*pagina prncipal*/
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: #96eb51;
+}
+.navbar-toggler {
+    border: none !important; 
+}
+.underline::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #c5a3e1;
+    visibility: hidden;
+    transition: 0.2s ease-in-out;
+
+}
+
+.underline:hover::before{
+    width: 100%;
+    visibility: visible;
+}
+/* Estilos del botón flotante del carrito */
+.boton-carrito {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    color: #000;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    z-index: 1000;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+  /* Hover para que se vea interactivo */
+.boton-carrito:hover {
+    background-color: #ffae34;
+    transform: scale(1.1);
+}
+  /* Estilos del contador (badge) */
+.contador-carrito {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: green;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 7px;
+    z-index: 1100;
+}
+
+/* 1. Banner */
+.card, .card img {
+    border-radius: 0 !important;
+
+}
+.text-overlay {
+    transform: translateY(34%);
+    text-align:justify ;
+    color: white;
+    max-width: 160%;
+    font-family:Poppins;
+}
+.card-title {
+    font-size: 110px;
+    font-weight: bold; 
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+}
+.card-text {
+    transform: translatex(0.2rem);
+    font-size: 1rem;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 4);
+}
+.michellada-container {
+    position: absolute;
+    bottom: 34%;
+    right: 9%;
+    width: 430px; 
+}
+.michellada-img {
+    width: 100%;
+}
+.logo-overlay {
+    position: absolute;
+    top: 60%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    width: 165px; 
+    z-index: 2;
+    will-change: transform;
+    animation: palpitar 1s infinite;
+    cursor: pointer;
+}
+
+/* 2. Media queries responsive */
+@media(max-width:375px){
+    .text-overlay {
+        transform: translateY(56%);
+        text-align: center;
+        max-width: 150%;
+    }
+    .card-title {
+        font-size: 39px;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+    }
+    .card-text {
+        transform: translatex(0%) !important;
+        font-size:13px;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 4);
+    }
+    .michellada-container {
+        bottom: 90%;
+        right: 30%;
+        width: 140px; 
+    }
+    .logo-overlay {
+        transform: translate(-50%, -50%);
+        width: 50px; 
+        z-index: 2;
+    }
+}
+@media(min-width:375px) and (max-width:472px){
+    .text-overlay {
+        transform: translateY(57%);
+        text-align: center;
+        max-width: 150%;
+    }
+    .card-title {
+        font-size: 51px;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+    }
+    .card-text {
+        transform: translatex(0%) !important;
+        font-size:1rem;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 4);
+    }
+    .michellada-container {
+        bottom: 95%;
+        right: 30%;
+        width: 160px; 
+    }
+    .logo-overlay {
+        transform: translate(-50%, -50%);
+        width: 60px; 
+        z-index: 2;
+    }
+}
+@media (min-width: 472px) and (max-width: 670px) {
+    .text-overlay {
+        transform: translateY(57%);
+        text-align: center;
+        max-width: 150%;
+    }
+    .card-title {
+        font-size: 70px;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+    }
+    .card-text {
+        transform: translatex(0%) !important;
+        font-size:1rem;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 4);
+    }
+}
+@media (min-width: 472px) and (max-width: 600px) {
+    .michellada-container {
+        bottom: 91%;
+        right: 30%;
+        width: 210px; 
+    }
+    .logo-overlay {
+        transform: translate(-50%, -50%);
+        width: 80px; 
+        z-index: 2;
+    }
+}
+@media (min-width: 600px) and (max-width: 670px) {
+    .michellada-container {
+        bottom: 93%;
+        right: 30%;
+        width: 250px; 
+    }
+    .logo-overlay {
+        width: 100px; 
+        z-index: 2;
+    }
+}
+
+@media (min-width: 670px) and (max-width: 900px) {
+    .text-overlay {
+        transform: translateY(60%);
+        text-align: center;
+        max-width: 150%;
+    }
+    .card-title {
+        font-size: 6rem;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+    }
+    .card-text {
+        font-size:1rem;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 4);
+    }
+}
+@media (min-width: 670px) and (max-width: 901px) {
+    .michellada-container {
+        bottom: 94%;
+        right: 30%;
+        width: 315px; 
+    }
+    .logo-overlay {
+        width: 127px; 
+        z-index: 2;
+    }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+    .text-overlay {
+        position: absolute;
+        transform: translateY(34%);
+        text-align: left;
+        color: white;
+        max-width: 160%;
+    }
+
+    .card-title {
+        font-size: 90px;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+        transform: translatex(0.2rem);
+    }
+
+    .card-text {
+        font-size:1rem;
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 4);
+    }
+}
+@media (min-width: 901px) and (max-width: 1020px) {
+    .michellada-container {
+        bottom: 34%;
+        right: 3%;
+        width: 340px; 
+    }
+    .logo-overlay {
+        width: 132px; 
+        z-index: 2;
+    }
+}
+@media (min-width: 1020px) and (max-width: 1200px) {
+    .michellada-container {
+        bottom: 34%;
+        right: 9%;
+        width: 380px; 
+    }
+    .logo-overlay {
+        width: 150px; 
+        z-index: 2;
+    }
+}
+
+/* 3. Animaciones */
+@keyframes palpitar {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+/* 4. productos */
+#productos{
+    background-color:#b2e389;
+    padding: 20px;
+    
+}
+.nuestros-productos{
+    text-align: center;
+    color:#0d5f07;
+    font-family: "Bebas Neue";
+    font-size: 43px;
+}
+.card-img-top {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center; 
+}
+.product-card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: bebas neue;
+    text-align: center;
+    font-size: 2rem;
+    color:#4caf50
+}
+.product-card-text {
+    font-size: 0.9rem;
+    font-family: sans-serif;
+    text-align: center;
+    color: black;
+}
+.btn-product {
+    margin: 20px;
+    background-color: #FFB74D; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-size: 0.8rem;
+}
+/* 5. footer */
+
+.footer-container {
+    background-color: #FFB74D; 
+    padding: 20px;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    font-family: open sans;
+}
+
+.footer-section h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.redes i {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.logo-footer img {
+    max-width: 150px;
+}
+@media screen and (max-width: 860px) {
+    .logo-footer {
+    display: none;
+    }
+}
+
+
+
+
+

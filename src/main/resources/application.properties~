@@ -1,0 +1,31 @@
+spring.application.name=Michelladas
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/michellada
+spring.datasource.username=postgres
+spring.datasource.password=2409
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA y Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+
+# Zona horaria
+spring.jpa.properties.hibernate.jdbc.time_zone=UTC
+
+# Internacionalización
+spring.messages.basename=messages
+spring.messages.encoding=UTF-8
+
+#Thymeleaf
+spring.thymeleaf.cache=false
+spring.thymeleaf.extras.spring-security.enabled=true
+
+
+# JWT config
+jwt.secret=eUP&bKwLrA@CF;nm)j*aGXNuB`,_#Y}^cHx3$"4:~v'%RVd{>qDZ!2.[sf(68gT-
+# JWT expiration: 1 día en milisegundos
+jwt.expiration=86400000
+
+logging.level.org.springframework.security=DEBUG

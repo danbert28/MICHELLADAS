@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Prueba</title>
+</head>
+<body>
+<h1>Funciona Thymeleaf</h1>
+<!-- pedido -->
+<div id="formPedido" style="display: none;">
+    <div class="formulario-pedido-modal">
+        <div class="pedido-izquierda">
+            <h2>Completar Pedido</h2>
+            <form id="formPedido">
+                <h3>Información de Envío</h3>
+                <input type="text" placeholder="Nombre" required>
+                <input type="text" placeholder="Teléfono" required>
+                <input type="text" placeholder="Barrio" required>
+                <input type="text" placeholder="Dirección" required>
+                <textarea placeholder="Puntos de Referencia" rows="3"></textarea>
+                <h3>Información de Pago</h3>
+                <label><input type="radio" name="pago" value="Efectivo" checked> Efectivo</label>
+                <label><input type="radio" name="pago" value="Nequi"> Nequi</label>
+            </form>
+        </div>
+
+        <div class="pedido-derecha">
+            <h3>Resumen del Pedido</h3>
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>$4,000</td>
+                </tr>
+                <tr>
+                    <td>Domicilio</td>
+                    <td>$2,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Pedido</strong></td>
+                    <td><strong>$6,000</strong></td>
+                </tr>
+            </table>
+            <button class="btn-verde" onclick="enviarPedido()">Hacer Pedido</button>
+        </div>
+    </div>
+</body>
+</html>
+

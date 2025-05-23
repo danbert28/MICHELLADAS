@@ -1,0 +1,22 @@
+thead th {
+    background-color: #fabb5f !important;
+    color: black;
+    border: 1px solid #ff9800;
+}
+
+.table td, .table th {
+    border: 1px solid #ff9800;
+}
+/* Imagen centrada */
+.img-thumbnail {
+    display: block;
+    margin: 0 auto;
+    max-height: 100px;
+}
+.table {
+    border-collapse: collapse;
+}
+.btn-outline-success:hover {
+    background-color: #198754;
+    color: white;
+}

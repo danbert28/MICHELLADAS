@@ -1,0 +1,41 @@
+window.addEventListener('DOMContentLoaded', () => {
+    const logo = document.querySelector('.logo-overlay');
+
+    let isPaused = false;
+
+    logo.addEventListener('click', () => {
+    if (isPaused) {
+        logo.style.animationPlayState = 'running';
+    } else {
+        logo.style.animationPlayState = 'paused';
+    }
+    isPaused = !isPaused;
+    });
+});
+
+/* Simulación: obtener el número de productos del carrito (por ahora localStorage)
+function actualizarContadorCarrito() {
+    const contador = document.getElementById("contadorCarrito");
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    contador.textContent = carrito.reduce((total, item) => total + item.cantidad, 0);
+}
+
+  // Ejecutar cuando cargue la página
+document.addEventListener("DOMContentLoaded", actualizarContadorCarrito);
+
+function agregarAlCarrito(nombre, precio) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    // Buscar si ya está en el carrito
+    const index = carrito.findIndex(item => item.nombre === nombre);
+    if (index !== -1) {
+    carrito[index].cantidad += 1;
+    } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarContadorCarrito(); // Actualiza el número
+}
+*/
+

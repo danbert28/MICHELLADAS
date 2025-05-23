@@ -1,0 +1,67 @@
+package com.dany.michelladas.Dto;
+import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import java.util.List;
+
+/**
+ * DTO utilizado para recibir los datos necesarios al crear un pedido
+ * por parte del usuario en Michelladas.
+ *
+ * Incluye: dirección, notas (opcionales), metodo de pago, y lista de productos con cantidades.
+ *
+ * Este DTO lo llena el usuario desde el formulario de "Finalizar compra".
+ *
+ * @author Dan
+ * @version 1.0
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class PedidoRegistroDto {
+
+        /** Dirección de entrega del pedido */
+        @NotBlank(message = "La dirección es obligatoria")
+        private String direccion;
+
+        /** Metodo de pago seleccionado (ej. Efectivo, Nequi) */
+        @NotBlank(message = "El método de pago es obligatorio")
+        private String metodoPago;
+
+        /** Notas adicionales o puntos de referencia */
+        private String notas;
+
+        /** Estado del pedido (ej. PENDIENTE, ENTREGADO) */
+        private String estado;
+
+        /** Lista de productos con su cantidad */
+        private List<DetallePedidoDto> productos;
+        /**
+         * DTO que representa un producto dentro de un pedido.
+         * Contiene el ID del producto y la cantidad seleccionada.
+         *
+         * Este DTO se utiliza dentro del PedidoRegistroDTO.
+         *
+         * @author Dan
+         */
+        @Data
+        @AllArgsConstructor
+        @NoArgsConstructor
+        @Builder
+        public static class DetallePedidoDto {
+
+                /** ID del producto seleccionado */
+                @NotNull(message = "El ID del producto es obligatorio")
+                private Long productoId;
+
+                /** Cantidad solicitada del producto */
+                @Min(value = 1, message = "La cantidad debe ser al menos 1")
+                private int cantidad;
+        }
+
+}

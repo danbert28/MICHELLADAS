@@ -1,0 +1,32 @@
+package com.dany.michelladas.Dto;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * DTO utilizado para autenticar a un usuario mediante su correo y contraseña.
+ * Validaciones incluidas para asegurar campos completos y formato correcto.
+ *
+ * @author Dan
+ * @version 1.0
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class ULoginDto {
+
+    /** Correo electrónico del usuario */
+    @Email(message = "Correo electrónico inválido")
+    @NotBlank(message = "El correo no puede estar vacío")
+    private String email;
+
+    /** Contraseña del usuario */
+    @NotBlank(message = "La contraseña no puede estar vacía")
+    private String contraseña;
+}
+
+

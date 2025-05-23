@@ -1,0 +1,30 @@
+body {
+    background-color: #d6f4be !important;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+}
+
+.btn-success:hover {
+    !important;
+    background-color: #218838;
+    color: black; /* oscurecido */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón "Mis pedidos" estilo línea como WhatsApp pero color naranja */
+.btn-outline-custom {
+    color: black;
+    border: 1px solid #ffb74d !important;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    background-color: #ffb74d !important;
+    color: black;
+}
+

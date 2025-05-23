@@ -1,0 +1,41 @@
+
+/* Estructura sticky del footer */
+html, body {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #fffced;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.card-t {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 1px #0000002c;
+}
+
+.card-tex {
+    font-size: 1rem;
+    color: #444;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.input-group .btn {
+    padding: 0.3rem 0.75rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+
+
+
