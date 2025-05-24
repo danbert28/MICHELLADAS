@@ -23,7 +23,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/admin/inicio}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/inicio}" th:text="#{admin.inicio}">Inicio</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <span th:text="${#authentication.name}">Admin</span>
@@ -31,21 +31,28 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <form th:action="@{/logout}" method="post">
-                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                <button type="submit" class="dropdown-item" th:text="#{boton.cerrar_sesion}">Cerrar sesión</button>
                             </form>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
+        <form method="get">
+            <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+            </select>
+        </form>
     </div>
 </nav>
 
 <!-- Contenido Principal -->
 <div class="container mt-4">
-    <h2 class="mb-4">Gestión de Pedidos</h2>
+    <h2 class="mb-4"  th:text="#{admin.gestion}">Gestión de Pedidos</h2>
     <div class="mb-3">
-        <button class="btn btn-outline-success"><i class="bi bi-printer"></i> Imprimir Reporte</button>
+        <button class="btn btn-outline-success"><i class="bi bi-printer" th:text="#{boton.imprimir}"></i> </button>
     </div>
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
@@ -96,7 +103,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Detalle del Pedido</h5>
+                <h5 class="modal-title" th:text="#{pedido.detalle}">Detalle del Pedido</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">

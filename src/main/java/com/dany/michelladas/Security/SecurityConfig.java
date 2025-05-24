@@ -71,7 +71,8 @@ public class SecurityConfig {
                                 "/css/**",       // Estilos
                                 "/js/**",        // JS
                                 "/imagenes/**",  // Imágenes
-                                "/api/usuarios/registro"
+                                "/api/usuarios/registro",
+                                "/favicon.ico"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Admin protegido por rol
                         .anyRequest().authenticated() //odo lo demas requiere login (incluye API)

@@ -16,8 +16,8 @@
 
   <!-- Mensaje principal -->
   <div class="card shadow-sm p-4 mx-auto" style="max-width: 600px;">
-    <h2 class="text-center text-success mb-3">¡Pedido confirmado con éxito!</h2>
-    <p class="text-center mb-4">Gracias por tu compra. Tu pedido ha sido recibido y está siendo preparado.</p>
+    <h2 class="text-center text-success mb-3" th:text="#{pedido.confirmado}">¡Pedido confirmado con éxito!</h2>
+    <p class="text-center mb-4" th:text="#{pedido.gracias}">Gracias por tu compra. Tu pedido ha sido recibido y está siendo preparado.</p>
 
     <!-- Resumen breve -->
     <div class="mb-2"><strong>ID del pedido:</strong> <span th:text="${pedidoConfirmado.id}">#123</span></div>
@@ -28,9 +28,9 @@
 
     <!-- Botones -->
     <div class="text-center mt-4">
-      <a th:href="@{/}" class="btn btn-outline-success me-2">Volver</a>
-      <a th:href="@{/pedido/historial}" class="btn btn-outline-success">Mis pedidos</a>
-      <button class="btn btn-outline-success ms-2" data-bs-toggle="modal" data-bs-target="#whatsappModal">¿Dudas? WhatsApp</button>
+      <a th:href="@{/}" class="btn btn-outline-success me-2" th:text="#{pedido.volver}">Volver</a>
+      <a th:href="@{/pedido/historial}" class="btn btn-outline-success" th:text="#{pedido.mis_pedidos}">Mis pedidos</a>
+      <button class="btn btn-outline-success ms-2" data-bs-toggle="modal" data-bs-target="#whatsappModal" th:text="#{pedido.dudas}">¿Dudas? WhatsApp</button>
     </div>
   </div>
 </div>
@@ -40,14 +40,14 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow-sm">
       <div class="modal-header">
-        <h5 class="modal-title text-modal" id="whatsappModalLabel">¡Contáctanos por WhatsApp!</h5>
+        <h5 class="modal-title text-modal" id="whatsappModalLabel" th:text="#{whatsapp.contacto}" >¡Contáctanos por WhatsApp!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body text-center">
-        <p>Si tienes alguna duda o quieres hacer un cambio, escríbenos por WhatsApp y te atenderemos.</p>
+        <p th:text="#{whatsapp.texto}">Si tienes alguna duda o quieres hacer un cambio, escríbenos por WhatsApp y te atenderemos.</p>
         <a th:href="'https://wa.me/573214139231?text=Hola, acabo de hacer un pedido con ID #' + ${pedidoConfirmado.id}"
            class="btn btn-outline-success" target="_blank">
-          <i class="bi bi-whatsapp"></i> Ir a WhatsApp
+          <i class="bi bi-whatsapp" th:text="#{whatsapp.boton}" ></i>
         </a>
       </div>
     </div>

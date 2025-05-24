@@ -22,7 +22,7 @@
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
                     <img th:src="@{/imagenes/Logo.svg}" alt="Logo" width="40" height="40" class="me-2">
-                    <h3 class="mb-0">Panel Administrador</h3>
+                    <h3 class="mb-0" th:text="#{header.admin}">Panel Administrador</h3>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
                                         <form th:action="@{/logout}" method="post">
-                                            <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                            <button type="submit" class="dropdown-item" th:text="#{boton.cerrar_sesion}">Cerrar sesión</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -55,6 +55,13 @@
                         </li>
                     </ul>
                 </div>
+                <form method="get">
+                    <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                        <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                        <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                        <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+                    </select>
+                </form>
             </div>
         </nav>
     </div>
@@ -62,15 +69,15 @@
 
 <!-- Contenido Principal -->
 <div class="container main-content py-5 text-center">
-    <h2 class="mb-3 text-success fw-bold">BIENVENIDO ADMIN</h2>
-    <p class="mb-4 fs-5">Michelladas te espera:</p>
+    <h2 class="mb-3 text-success fw-bold" th:text="#{admin.bienvenida}">BIENVENIDO ADMIN</h2>
+    <p class="mb-4 fs-5" th:text="#{admin.mensaje}">Michelladas te espera:</p>
 
     <div class="row justify-content-center gap-4">
         <div class="col-md-4">
             <a th:href="@{/admin/menu}" class="text-decoration-none">
                 <div class="card admin-card p-4 shadow">
                     <i class="bi bi-pencil-square display-5 mb-3 text-dark"></i>
-                    <h5 class="text-dark">Edita tus productos</h5>
+                    <h5 class="text-dark" th:text="#{admin.menu}">Edita tus productos</h5>
                 </div>
             </a>
         </div>
@@ -78,7 +85,7 @@
             <a th:href="@{/admin/pedidos}" class="text-decoration-none">
                 <div class="card admin-card p-4 shadow">
                     <i class="bi bi-list-check display-5 mb-3 text-dark"></i>
-                    <h5 class="text-dark">Nuestros pedidos</h5>
+                    <h5 class="text-dark" th:text="#{admin.pedidos}">Nuestros pedidos</h5>
                 </div>
             </a>
         </div>
@@ -89,11 +96,11 @@
 <footer class="footer-container">
     <div class="footer-content">
         <div class="footer-section">
-            <h4>SOBRE NOSOTROS</h4>
-            <p>Somos un emprendimiento creado con mucho amor y ganas de superarnos.</p>
+            <h4 th:text="#{footer.sobre_nosotros}">SOBRE NOSOTROS</h4>
+            <p th:text="#{footer.texto}">Somos un emprendimiento creado con mucho amor y ganas de superarnos.</p>
         </div>
         <div class="footer-section">
-            <h4>CONTÁCTANOS</h4>
+            <h4 th:text="#{footer.contactanos}">CONTÁCTANOS</h4>
             <p><i class="bi bi-telephone"></i> +57 324 5644770 - +57 300 7949756</p>
             <p><i class="bi bi-geo-alt"></i> SAHAGUN - CORDOBA</p>
             <div class="redes">

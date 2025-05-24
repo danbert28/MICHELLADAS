@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/admin/menu}">Atrás</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/menu}" th:text="#{atras}" >Atrás</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <span th:text="${#authentication.name}">Admin</span>
@@ -26,48 +26,55 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <form th:action="@{/logout}" method="post">
-                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                <button type="submit" class="dropdown-item" th:text="#{boton.cerrar_sesion}">Cerrar sesión</button>
                             </form>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
+        <form method="get">
+            <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+            </select>
+        </form>
     </div>
 </nav>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Agregar Nuevo Producto</h2>
+    <h2 class="mb-4" th:text="#{agregar.producto}">Agregar Nuevo Producto</h2>
 
     <form th:action="@{/admin/producto/nuevo}" th:object="${producto}" method="post">
         <!-- Nombre -->
         <div class="mb-3">
-            <label class="form-label">Nombre del producto</label>
+            <label class="form-label" th:text="#{nombre.producto}" >Nombre del producto</label>
             <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ej. Mango Frappé" required>
         </div>
 
         <!-- Descripción -->
         <div class="mb-3">
-            <label class="form-label">Descripción</label>
+            <label class="form-label" th:text="#{descripcion.producto}">Descripción</label>
             <textarea th:field="*{descripcion}" class="form-control" rows="3" placeholder="Descripción del producto" required></textarea>
         </div>
 
         <!-- Precio -->
         <div class="mb-3">
-            <label class="form-label">Precio</label>
+            <label class="form-label" th:text="#{precio.producto}">Precio</label>
             <input type="number" th:field="*{precio}" class="form-control" step="0.01" min="0" required>
         </div>
 
         <!-- Imagen (nombre del archivo) -->
         <div class="mb-3">
-            <label class="form-label">Nombre del archivo de imagen (ubicado en /imagenes)</label>
+            <label class="form-label" th:text="#{imagen.producto}">URL de Imagen</label>
             <input type="text" th:field="*{imagen}" class="form-control" placeholder="Ej. mango.png" required>
         </div>
 
         <!-- Botones -->
         <div class="d-flex justify-content-end gap-2">
-            <a th:href="@{/admin/menu}" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-success">Guardar Producto</button>
+            <a th:href="@{/admin/menu}" class="btn btn-outline-secondary" th:text="#{boton.cancelar}">Cancelar</a>
+            <button type="submit" class="btn btn-success" th:text="#{boton.guardar} ">Guardar Producto</button>
         </div>
     </form>
 </div>

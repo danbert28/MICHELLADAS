@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
                     <img th:src="@{/imagenes/Logo.svg}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-                    <a class="nav-link active ms-2" aria-current="page" th:href="@{/}">Home</a>
+                    <a class="nav-link active ms-2" aria-current="page" th:href="@{/}" th:text="#{header.home}">Home</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,10 +32,10 @@
                     <ul class="navbar-nav">
                         <!-- Si NO está autenticado -->
                         <li th:if="${not #authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                            <a class="nav-link" th:href="@{/login}" th:text="#{header.iniciarSesion}">Iniciar sesión</a>
                         </li>
                         <li th:if="${not #authorization.expression('isAuthenticated()')}">
-                            <a class="nav-link" th:href="@{/register}">Registrarse</a>
+                            <a class="nav-link" th:href="@{/register}" th:text="#{header.registrarse}" >Registrarse</a>
                         </li>
 
                         <!-- Si está autenticado -->
@@ -48,7 +48,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
                                         <form th:action="@{/logout}" method="post">
-                                            <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                            <button type="submit" class="dropdown-item" th:text="#{boton.cerrar_sesion}" >Cerrar sesión</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -56,6 +56,13 @@
                         </li>
                     </ul>
                 </div>
+                <form method="get">
+                    <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                        <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                        <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                        <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+                    </select>
+                </form>
             </div>
         </nav>
     </div>
@@ -65,24 +72,24 @@
 <div class="container my-5">
     <div class="text-center mb-4">
         <img th:src="@{/imagenes/Logo.svg}" alt="Logo Michelladas" style="height: 70px">
-        <h2 class="mt-2">Finalizar Pedido</h2>
+        <h2 class="mt-2" th:text="#{pedido.titulo}">Finalizar Pedido</h2>
     </div>
 
     <div class="row justify-content-center">
         <!-- FORMULARIO -->
         <div class="col-md-6 mb-4">
             <form th:action="@{/pedido/confirmar}" th:object="${pedidoRegistroDto}" method="post">
-            <h4 class="mb-3 text-success">Datos de Entrega</h4>
+            <h4 class="mb-3 text-success" th:text="#{pedido.datos_entrega}">Datos de Entrega</h4>
 
                 <div class="mb-3">
-                    <label for="direccion" class="form-label">Dirección</label>
+                    <label for="direccion" class="form-label" th:text="#{pedido.direccion}">Dirección</label>
                     <input type="text" id="direccion" th:field="*{direccion}" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="metodoPago" class="form-label">Método de pago</label>
+                    <label for="metodoPago" class="form-label" th:text="#{pedido.metodo_pago}">Método de pago</label>
                     <select id="metodoPago" th:field="*{metodoPago}" class="form-select" required>
-                        <option value="">Seleccione una opción</option>
+                        <option value="" >Seleccione una opción</option>
                         <option value="Efectivo">Efectivo</option>
                         <option value="Nequi">Nequi</option>
                         <option value="Transferencia">Transferencia</option>
@@ -90,11 +97,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="notas" class="form-label">Notas adicionales</label>
+                    <label for="notas" class="form-label" th:text="#{pedido.notas_adicionales}">Notas adicionales</label>
                     <textarea id="notas" th:field="*{notas}" class="form-control" placeholder="Ej: pagar con $50.000 o sin hielo"></textarea>
                 </div>
                 <div class="text-end">
-                    <button type="submit" class="btn btn-success">Confirmar Pedido</button>
+                    <button type="submit" class="btn btn-success" th:text="#{pedido.confirmar_pedido}">Confirmar Pedido</button>
                 </div>
             </form>
         </div>
@@ -103,7 +110,7 @@
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-titl">Resumen</h5>
+                    <h5 class="card-titl" th:text="#{pedido.resumen_pedido}">Resumen</h5>
                     <div th:each="item : ${items}" class="d-flex justify-content-between mb-2">
                         <span><strong th:text="${item.nombreProducto}">Nombre</strong> x <span th:text="${item.cantidad}">1</span></span>
                         <span th:text="${#numbers.formatDecimal(item.precio * item.cantidad, 1, 'POINT', 2, 'COMMA')}">$0.00</span>
@@ -125,11 +132,11 @@
     <footer class="footer-container">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>SOBRE NOSOTROS</h4>
-                <p>Somos un emprendimiento creado con mucho amor y ganas de superarnos.</p>
+                <h4 th:text="#{footer.sobre_nosotros}"> SOBRE NOSOTROS</h4>
+                <p th:text="#{footer.texto}">Somos un emprendimiento creado con mucho amor y ganas de superarnos.</p>
             </div>
             <div class="footer-section">
-                <h4>CONTÁCTANOS</h4>
+                <h4 th:text="#{footer.contactanos}">CONTÁCTANOS</h4>
                 <p><i class="bi bi-telephone"></i> +57 324 5644770 - +57 300 7949756</p>
                 <p><i class="bi bi-geo-alt"></i> SAHAGUN - CORDOBA</p>
                 <div class="redes">

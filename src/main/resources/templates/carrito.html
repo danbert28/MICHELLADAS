@@ -21,7 +21,7 @@
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
                     <img th:src="@{/imagenes/Logo.svg}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
-                    <a class="nav-link active ms-2" aria-current="page" th:href="@{/}">Home</a>
+                    <a class="nav-link active ms-2" aria-current="page" th:href="@{/}" th:text="#{header.home}">Home</a>
                 </div> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,10 +30,10 @@
                 <ul class="navbar-nav">
                     <!-- Si NO está autenticado -->
                     <li th:if="${not #authorization.expression('isAuthenticated()')}">
-                        <a class="nav-link" th:href="@{/login}">Iniciar sesión</a>
+                        <a class="nav-link" th:href="@{/login}" th:text="#{header.iniciarSesion}">Iniciar sesión</a>
                     </li>
                     <li th:if="${not #authorization.expression('isAuthenticated()')}">
-                        <a class="nav-link" th:href="@{/register}">Registrarse</a>
+                        <a class="nav-link" th:href="@{/register}" th:text="#{header.registrarse}">Registrarse</a>
                     </li>
 
                     <!-- Si está autenticado -->
@@ -46,7 +46,7 @@
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li>
                                     <form th:action="@{/logout}" method="post">
-                                        <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                        <button type="submit" class="dropdown-item" th:text="#{boton.cerrar_sesion}">Cerrar sesión</button>
                                     </form>
                                 </li>
                             </ul>
@@ -54,6 +54,13 @@
                     </li>
                 </ul>
             </div>
+                <form method="get">
+                    <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                        <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                        <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                        <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+                    </select>
+                </form>
             </div>
         </nav>
         </div>
@@ -63,13 +70,13 @@
     <div class="container my-5">
         <div class="text-center mb-4">
             <img th:src="@{/imagenes/Logo.svg}" style="height: 60px">
-            <h2 class="mt-2">Tu pedido</h2>
+            <h2 class="mt-2" th:text="#{carrito.pedido}">Tu pedido</h2>
         </div>
 
         <!-- Carrito vacío -->
         <div th:if="${#lists.isEmpty(items)}" class="text-center">
             <p>Tu carrito está vacío.</p>
-            <a th:href="@{/}" class="btn btn-success fw-bold rounded-pill">Ver productos</a>
+            <a th:href="@{/}" class="btn btn-success fw-bold rounded-pill" th:text="#{boton.ver_productos}">Ver productos</a>
         </div>
 
         <!-- Carrito con productos -->
@@ -78,7 +85,7 @@
                 <div class="card mb-3">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
-                            <h5 class="card-t" th:text="${item.nombreProducto}">Nombre Producto</h5>
+                            <h5 class="card-t" th:text="${item.nombreProducto}" >Nombre Producto</h5>
                             <p class="card-tex">Precio: $<span th:text="${#numbers.formatDecimal(item.precio, 1, 'POINT', 2, 'COMMA')}">$0.00</span></p>
                             <div class="input-group">
                                 <form th:action="@{/carrito/actualizar}" method="post" class="d-inline">
@@ -105,8 +112,8 @@
             <!-- Totales y acciones -->
             <div class="text-end">
                 <h4>Total: $<span th:text="${#numbers.formatDecimal(total, 1, 'POINT', 2, 'COMMA')}">$0.00</span></h4>
-                <a th:href="@{/carrito/vaciar}" class="btn btn-outline-danger rounded-pill">Vaciar carrito</a>
-                <a th:href="@{/pedido}" class="btn btn-success fw-bold rounded-pill">Continuar pedido</a>
+                <a th:href="@{/carrito/vaciar}" class="btn btn-outline-danger rounded-pill" th:text="#{boton.vaciar_carrito}">Vaciar carrito</a>
+                <a th:href="@{/pedido}" class="btn btn-success fw-bold rounded-pill" th:text="#{boton.continuar_pedido}">Continuar pedido</a>
             </div>
         </div>
     </div>

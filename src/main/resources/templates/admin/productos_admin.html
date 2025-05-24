@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" th:href="@{/admin/inicio}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/admin/inicio}" th:text="#{admin.inicio}">Inicio</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <span th:text="${#authentication.name}">Admin</span>
@@ -32,23 +32,30 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <form th:action="@{/logout}" method="post">
-                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                <button type="submit" class="dropdown-item" th:text="#{boton.cerrar_sesion}">Cerrar sesión</button>
                             </form>
                         </li>
                     </ul>
                 </li>
             </ul>
         </div>
+        <form method="get">
+            <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+            </select>
+        </form>
     </div>
 </nav>
 
 <!-- Contenido -->
 <div class="container mt-5">
-    <h2 class="mb-4">Gestión de Productos</h2>
+    <h2 class="mb-4" th:text="#{admin.gestionpo}">Gestión de Productos</h2>
 
     <div class="mb-3 text-end">
         <a class="btn btn-outline-success" th:href="@{/admin/producto/nuevo}">
-            <i class="bi bi-plus-circle"></i> Agregar Producto
+            <i class="bi bi-plus-circle" th:text="#{agregar.producto}"></i>
         </a>
     </div>
 
@@ -72,7 +79,7 @@
                 <td>
                     <div class="d-flex flex-column gap-2">
                         <a th:href="@{/admin/producto/editar/{id}(id=${producto.id})}" class="btn btn-outline-success btn-sm">
-                            <i class="bi bi-pencil"></i> Editar
+                            <i class="bi bi-pencil" th:text="#{boton.editar}"></i>
                         </a>
                     </div>
                 </td>
