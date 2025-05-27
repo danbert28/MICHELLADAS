@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * Controlador que maneja las operaciones relacionadas con los productos.
  * Existen rutas públicas (ver productos) y rutas protegidas para admin (crear, editar, eliminar).
+ * @author Dan
+ * @version 1.0
  */
 @RestController
 @RequestMapping("/api/productos")

@@ -1,6 +1,4 @@
 package com.dany.michelladas.Entity;
-
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,8 +27,4 @@ public class Rol {
     public Rol(ERol rolenombre) {
         this.rolenombre = rolenombre;
     }
-
-
-
-
 }

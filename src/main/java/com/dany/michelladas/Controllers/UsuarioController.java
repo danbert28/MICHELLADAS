@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * Expone endpoints públicos para login y registro.
  *
  * @author Dan
+ * @version 1.0
  */
 @RestController
 @RequestMapping("/api/usuarios")

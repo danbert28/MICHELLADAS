@@ -58,15 +58,15 @@
                                 </ul>
                             </div>
                         </li>
+                        <form method="get">
+                            <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
+                                <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
+                                <option value="en" th:selected="${#locale.language == 'en'}">En</option>
+                                <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
+                            </select>
+                        </form>
                     </ul>
                 </div>
-                <form method="get">
-                    <select name="lang" onchange="this.form.submit()" class="form-select form-select-sm">
-                        <option value="es" th:selected="${#locale.language == 'es'}">Es</option>
-                        <option value="en" th:selected="${#locale.language == 'en'}">En</option>
-                        <option value="ca" th:selected="${#locale.language == 'ca'}">Ca</option>
-                    </select>
-                </form>
 
             </div>
         </nav>

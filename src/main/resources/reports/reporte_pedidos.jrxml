@@ -1,0 +1,82 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="reporte_pedidos" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e3d5159-9a8a-46fd-91f5-91a262a3036b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MICHELLADA"/>
+	<query language="SQL"><![CDATA[SELECT
+  p.id,
+  p.created_at AS fecha,
+  u.nombre AS cliente,
+  p.direccion,
+  p.total,
+  p.metodo_pago,
+  p.estado
+FROM public.pedido p
+JOIN public.usuario u ON u.id = p.usuario_id
+]]></query>
+	<field name="id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="fecha" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="cliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuario"/>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.label" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total"/>
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="metodo_pago" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="metodo_pago"/>
+		<property name="com.jaspersoft.studio.field.label" value="metodo_pago"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="estado"/>
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<group name="id">
+		<expression><![CDATA[$F{id}]]></expression>
+	</group>
+	<group name="fecha">
+		<expression><![CDATA[$F{fecha}]]></expression>
+	</group>
+	<group name="cliente">
+		<expression><![CDATA[$F{cliente}]]></expression>
+	</group>
+	<group name="direccion">
+		<expression><![CDATA[$F{direccion}]]></expression>
+	</group>
+	<group name="total">
+		<expression><![CDATA[$F{total}]]></expression>
+	</group>
+	<group name="metodo_pago">
+		<expression><![CDATA[$F{metodo_pago}]]></expression>
+	</group>
+	<group name="estado">
+		<expression><![CDATA[$F{estado}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch"/>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="61" splitType="Stretch"/>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

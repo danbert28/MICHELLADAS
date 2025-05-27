@@ -52,7 +52,10 @@
 <div class="container mt-4">
     <h2 class="mb-4"  th:text="#{admin.gestion}">Gestión de Pedidos</h2>
     <div class="mb-3">
-        <button class="btn btn-outline-success"><i class="bi bi-printer" th:text="#{boton.imprimir}"></i> </button>
+        <a href="/admin/reporte/pedidos" target="_blank" class="btn btn-outline-success">
+            <i class="bi bi-printer"></i> Imprimir Reporte
+        </a>
+
     </div>
     <div class="table-responsive">
     <table class="table table-bordered table-hover">
@@ -63,6 +66,7 @@
             <th>Cliente</th>
             <th>Dirección</th>
             <th>Total</th>
+            <th>Método de Pago</th>
             <th>Estado</th>
             <th>Actualizar Estado</th>
             <th>Detalle</th>
@@ -75,6 +79,7 @@
             <td th:text="${pedido.nombreUsuario}"></td>
             <td th:text="${pedido.direccion}"></td>
             <td th:text="${pedido.total}"></td>
+            <td th:text="${pedido.metodoPago}"></td>
             <td th:text="${pedido.estado}"></td>
             <td>
                 <form th:action="@{/admin/pedido/estado}" method="post" class="d-flex">

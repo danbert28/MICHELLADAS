@@ -36,7 +36,11 @@ public class AdminController {
     private final PedidoRepository pedidoRepository;
 
     /**
-     * Página de inicio del panel administrador.
+     * Muestra la página de inicio del panel administrativo.
+     *
+     * @param model el modelo utilizado para enviar datos a la vista
+     * @param user el usuario autenticado que ha iniciado sesión
+     * @return la vista correspondiente al inicio del panel administrador
      */
     @GetMapping("/inicio")
     public String inicioAdmin(Model model, @AuthenticationPrincipal UserDetailsImpl user) {
@@ -45,7 +49,10 @@ public class AdminController {
     }
 
     /**
-     * Vista de pedidos: muestra todos los pedidos para administradores.
+     * Muestra todos los pedidos registrados, visible solo para administradores.
+     *
+     * @param model el modelo utilizado para agregar la lista de pedidos a la vista
+     * @return la vista de administración de pedidos
      */
     @GetMapping("/pedidos")
     public String verPedidos(Model model) {
@@ -55,7 +62,11 @@ public class AdminController {
     }
 
     /**
-     * Permite cambiar el estado de un pedido.
+     * Actualiza el estado de un pedido específico.
+     *
+     * @param pedidoId el ID del pedido cuyo estado se desea actualizar
+     * @param nuevoEstado el nuevo estado que se asignará al pedido
+     * @return redirección a la lista de pedidos actualizada
      */
     @PostMapping("/pedido/estado")
     public String actualizarEstado(@RequestParam Long pedidoId,
@@ -65,7 +76,10 @@ public class AdminController {
     }
 
     /**
-     * Devuelve los detalles de un pedido específico para admin (JSON).
+     * Obtiene el detalle de un pedido específico en formato JSON.
+     *
+     * @param id el ID del pedido del cual se desean obtener los detalles
+     * @return una lista de objetos DTO que representan los detalles del pedido
      */
     @GetMapping("/pedido/{id}/detalle")
     @ResponseBody
@@ -74,7 +88,10 @@ public class AdminController {
     }
 
     /**
-     * Vista del menú admin: gestionar productos.
+     * Muestra la vista del menú de administración de productos.
+     *
+     * @param model el modelo utilizado para pasar los productos actuales y el formulario de nuevo producto
+     * @return la vista del menú de productos para administración
      */
     @GetMapping("/menu")
     public String verMenuAdmin(Model model) {
@@ -83,8 +100,10 @@ public class AdminController {
         return "admin/productos_admin";
     }
     /**
-     * Vista para crear producto.
+     * Muestra el formulario para registrar un nuevo producto.
      *
+     * @param model el modelo utilizado para cargar el objeto producto vacío
+     * @return la vista del formulario de creación de nuevo producto
      */
     @GetMapping("/producto/nuevo")
     public String mostrarFormularioNuevoProducto(Model model) {
@@ -93,7 +112,10 @@ public class AdminController {
     }
 
     /**
-     * Guarda un nuevo producto desde la vista admin.
+     * Guarda un nuevo producto en la base de datos.
+     *
+     * @param producto el objeto producto obtenido desde el formulario
+     * @return redirección a la vista del menú administrativo
      */
     @PostMapping("/producto/nuevo")
     public String guardarNuevoProducto(@ModelAttribute Producto producto) {
@@ -102,7 +124,11 @@ public class AdminController {
     }
 
     /**
-     * Vista para editar producto.
+     * Muestra el formulario de edición de un producto existente.
+     *
+     * @param id el ID del producto que se desea editar
+     * @param model el modelo utilizado para cargar el producto en el formulario
+     * @return la vista del formulario de edición de producto
      */
     @GetMapping("/producto/editar/{id}")
     public String editarProducto(@PathVariable Long id, Model model) {
@@ -113,7 +139,11 @@ public class AdminController {
     }
 
     /**
-     * Procesa la edición del producto.
+     * Procesa la actualización de un producto existente.
+     *
+     * @param id el ID del producto a actualizar
+     * @param productoForm los datos actualizados del producto obtenidos del formulario
+     * @return redirección a la vista del menú de productos
      */
     @PostMapping("/producto/editar/{id}")
     public String actualizarProducto(@PathVariable Long id, @ModelAttribute Producto productoForm) {

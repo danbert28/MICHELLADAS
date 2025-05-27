@@ -40,7 +40,7 @@ public class PedidoController {
     @GetMapping("/pedido")
     @PreAuthorize("hasRole('USUARIO')")
     public String mostrarFormulario(Model model, HttpSession session) {
-        List<ItemCarritoDto> items = (List<ItemCarritoDto>) session.getAttribute("items"); // si estás usando sesión
+        List<ItemCarritoDto> items = (List<ItemCarritoDto>) session.getAttribute("items");
         double total = (double) session.getAttribute("total");
 
         model.addAttribute("pedidoRegistroDto", new PedidoRegistroDto());
